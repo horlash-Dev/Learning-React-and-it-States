@@ -1,0 +1,9 @@
+body {
+  margin: 0 auto;
+  background-color: snow;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+span {
+  text-transform: capitalize;
+}

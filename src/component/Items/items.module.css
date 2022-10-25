@@ -1,0 +1,9 @@
+.boxStyle {
+    text-transform: uppercase;
+    font-size: large;
+    color: greenyellow;
+}
+
+.boxStyle.alert {
+    color: red;
+}
