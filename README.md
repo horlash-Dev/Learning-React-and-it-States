@@ -2,6 +2,13 @@
 
 I developed this web app based on the js array method(related to a crud app).
 
+- react state
+- react refs
+- react fragment
+- react hooks
+- react components
+- event & props
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -10,4 +17,3 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-

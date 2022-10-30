@@ -1,46 +1,40 @@
-import { useState } from "react";
+import { useState, Fragment, useRef } from "react";
 
 const RateForm = (props) => {
   // set state for form properties
-
+  // method 1
   const [earnIn, setEarn] = useState("");
-  const [rateIn, setRate] = useState("");
+  //method 3 for input access only
+  const rateIn = useRef("");
 
-  // method 2
+  // method 2 for multiple inputs
   // const [methodXtra, setMethod] = useState({
   //   earnIn: '', rateIn: ''
   // })
   const earnHandler = (event) => {
     setEarn(event.target.value);
-    //  method 3
+    //  method 2 cont
     // setMethod((previousData) => {
     //   return {...previousData, earnIn: event.target.value}
-    // })
-  };
-
-  const rateHandler = (event) => {
-    setRate(event.target.value);
-    // method 3
-    // setMethod((previousData) => {
-    //   return {...previousData, rateIn: event.target.value}
     // })
   };
 
   //  submit form
   const rateSubmit = (e) => {
     e.preventDefault();
+    let setRate = rateIn.current.value;
     const _newrate = {
       gain: earnIn,
-      rate: rateIn,
+      rate: setRate,
       id: Math.random().toString(),
     };
     props.storeRate(_newrate);
     setEarn("");
-    setRate("");
+    rateIn.current.value = "";
   };
   if (props.formProp) {
     return (
-      <div>
+      <Fragment>
         <div className="col-md-12 bg-light rounded-5 p-5 my-5">
           <form action="" onSubmit={rateSubmit} className="form-group">
             <div className="mb-2">
@@ -68,8 +62,7 @@ const RateForm = (props) => {
                 required
                 className="form-control"
                 placeholder=""
-                value={rateIn}
-                onChange={rateHandler}
+                ref={rateIn}
               />
               <small id="helpId" className="text-muted">
                 ratings
@@ -88,7 +81,7 @@ const RateForm = (props) => {
             </div>
           </form>
         </div>
-      </div>
+      </Fragment>
     );
   }
 };

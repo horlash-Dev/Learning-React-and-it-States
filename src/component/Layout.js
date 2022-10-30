@@ -2,7 +2,7 @@ import dummyData from "./api/dummy";
 import GetItems from "./Items/getItems";
 import Button from "./Items/Button";
 import RateForm from "./form/addRate";
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import "./layout.css";
 
 const Layout = () => {
@@ -39,15 +39,18 @@ const Layout = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="container mt-5 mb-5">
         <div className="card bg-dark rounded-5 p-5">
           {getWidget && (
-            <div>
+            <Fragment>
               <div className="row my-3">
                 <div className="text-center mx-auto text-white">
-                  <Button className="btn-md btn-info py-2 px-5 rounded-1">
-                    <span onClick={showForm}>Toggle rate form</span>
+                  <Button
+                    onClick={showForm}
+                    className="btn-md btn-info py-2 px-5 rounded-1"
+                  >
+                    <span>Toggle rate form</span>
                   </Button>
                 </div>
                 <RateForm storeRate={store} formProp={getForm} />
@@ -56,17 +59,18 @@ const Layout = () => {
                 <p className="text-white fs-5">no items found</p>
               )}
               <GetItems items={getItems} removeId={updateItems} />
-            </div>
+            </Fragment>
           )}
 
-          <Button className="btn-sm py-2 btn-outline-light">
-            <span onClick={showWidget}>
-              Toggle me to start React application
-            </span>
+          <Button
+            className="btn-sm py-2 btn-outline-light"
+            onClick={showWidget}
+          >
+            <span>Toggle me to start React application</span>
           </Button>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
